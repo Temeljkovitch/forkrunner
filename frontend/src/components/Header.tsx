@@ -5,20 +5,20 @@ import MainNav from "./MainNav";
 
 const Header = () => {
   return (
-    <div className="border-b-2 border-b-emerald-500 py-6">
+    <div className=" py-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-3xl flex items-center gap-2 font-bold tracking-tight text-emerald-500"
+          className="text-3xl flex items-center gap-2 font-bold tracking-tight text-lime-600"
         >
           <BiFork />
           ForkRunner
         </Link>
         <div className="md:hidden">
-          <MobileNav/>
+          <MobileNav />
         </div>
         <div className="hidden md:block">
-          <MainNav/>
+          <MainNav />
         </div>
       </div>
     </div>
