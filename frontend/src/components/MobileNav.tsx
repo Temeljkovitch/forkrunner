@@ -1,7 +1,7 @@
-import { CgMenuRightAlt } from "react-icons/cg";
+import { IoMenu } from "react-icons/io5";
+
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetTitle,
@@ -16,7 +16,7 @@ const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center">
-        <CgMenuRightAlt className="text-lime-600 h-7 w-7" />
+        <IoMenu className="text-lime-600 h-8 w-8" />
       </SheetTrigger>
       <SheetContent className="space-y-3">
         <SheetTitle className="text-center">
