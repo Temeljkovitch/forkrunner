@@ -1,5 +1,5 @@
 import landingImage from "../assets/landing.png";
-import { FaApple, FaGooglePlay, FaAppStore } from "react-icons/fa";
+import { FaGooglePlay, FaAppStore } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,6 @@ const HomePage = () => {
             recommendations
           </span>
           <div className="flex items-center gap-4">
-
             <Link to="https://www.apple.com/br/store">
               <FaAppStore className="w-8 h-8 hover:text-lime-600 duration-200" />
             </Link>
