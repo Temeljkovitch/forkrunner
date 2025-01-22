@@ -1,5 +1,5 @@
 import { FaUser } from "react-icons/fa6";
-
+import { BiSolidDownArrow } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -13,15 +13,20 @@ import {
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 hover:text-lime-600 duration-200 font-semibold text-slate-700">
         <FaUser className="h-4 w-4" />
         {user?.name}
+        <BiSolidDownArrow className="h-3 w-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link className="hover:text-lime-600 font-semibold duration-200" to="/user-profile">
+          <Link
+            className="hover:text-lime-600 font-semibold duration-200"
+            to="/user-profile"
+          >
             User Profile
           </Link>
         </DropdownMenuItem>
