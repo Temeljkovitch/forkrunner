@@ -13,7 +13,8 @@ import {
 import LoadingButton from "@/components/LoadingButton";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { User } from "@auth0/auth0-react";
+import { User } from "@/types";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   email: z.string().optional(),
@@ -26,9 +27,9 @@ const formSchema = z.object({
 type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
+  currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isUpdateUserLoading: boolean;
-  currentUser: User;
 };
 
 const UserProfileForm = ({
@@ -38,8 +39,13 @@ const UserProfileForm = ({
 }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: currentUser,
   });
-  const { email, name, addressLine1, city, country } = currentUser;
+
+  useEffect(() => {
+    form.reset(currentUser);
+  }, [currentUser, form]);
+
   return (
     <Form {...form}>
       <form
@@ -56,7 +62,6 @@ const UserProfileForm = ({
         <FormField
           control={form.control}
           name="email"
-          defaultValue={email}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -70,7 +75,6 @@ const UserProfileForm = ({
         <FormField
           control={form.control}
           name="name"
-          defaultValue={name}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
@@ -85,7 +89,6 @@ const UserProfileForm = ({
         <FormField
           control={form.control}
           name="addressLine1"
-          defaultValue={addressLine1}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Adress Line 1</FormLabel>
@@ -100,7 +103,6 @@ const UserProfileForm = ({
         <FormField
           control={form.control}
           name="city"
-          defaultValue={city}
           render={({ field }) => (
             <FormItem>
               <FormLabel>City</FormLabel>
@@ -115,7 +117,6 @@ const UserProfileForm = ({
         <FormField
           control={form.control}
           name="country"
-          defaultValue={country}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Country</FormLabel>

@@ -18,7 +18,7 @@ const UsernameMenu = () => {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 hover:text-lime-600 duration-200 font-semibold text-slate-700">
         <FaUser className="h-4 w-4" />
-        {user?.name}
+        {user?.email}
         <BiSolidDownArrow className="h-3 w-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>

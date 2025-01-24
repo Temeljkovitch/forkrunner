@@ -3,10 +3,15 @@ import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateUserLoading } = useUpdateUser();
-  const { currentUser, isLoading: isGetCurrentUserLoading } = useGetCurrentUser();
+  const { currentUser, isLoading: isGetCurrentUserLoading } =
+    useGetCurrentUser();
 
   if (isGetCurrentUserLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
+  }
+
+  if (!currentUser) {
+    return <div>Unable to laod user profile!</div>;
   }
 
   return (
