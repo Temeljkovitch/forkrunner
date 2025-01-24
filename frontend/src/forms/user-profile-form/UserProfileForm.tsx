@@ -13,6 +13,7 @@ import {
 import LoadingButton from "@/components/LoadingButton";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { User } from "@auth0/auth0-react";
 
 const formSchema = z.object({
   email: z.string().optional(),
@@ -26,14 +27,19 @@ type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   onSave: (userProfileData: UserFormData) => void;
-  isLoading: boolean;
+  isUpdateUserLoading: boolean;
+  currentUser: User;
 };
 
-const UserProfileForm = ({ onSave, isLoading }: Props) => {
+const UserProfileForm = ({
+  onSave,
+  isUpdateUserLoading,
+  currentUser,
+}: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
   });
-
+  const { email, name, addressLine1, city, country } = currentUser;
   return (
     <Form {...form}>
       <form
@@ -50,6 +56,7 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
         <FormField
           control={form.control}
           name="email"
+          defaultValue={email}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -63,6 +70,7 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
         <FormField
           control={form.control}
           name="name"
+          defaultValue={name}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
@@ -73,11 +81,11 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
             </FormItem>
           )}
         />
-
         {/* Address Line 1 */}
         <FormField
           control={form.control}
           name="addressLine1"
+          defaultValue={addressLine1}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Adress Line 1</FormLabel>
@@ -92,6 +100,7 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
         <FormField
           control={form.control}
           name="city"
+          defaultValue={city}
           render={({ field }) => (
             <FormItem>
               <FormLabel>City</FormLabel>
@@ -106,6 +115,7 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
         <FormField
           control={form.control}
           name="country"
+          defaultValue={country}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Country</FormLabel>
@@ -117,7 +127,7 @@ const UserProfileForm = ({ onSave, isLoading }: Props) => {
           )}
         />
 
-        {isLoading ? (
+        {isUpdateUserLoading ? (
           <LoadingButton />
         ) : (
           <Button

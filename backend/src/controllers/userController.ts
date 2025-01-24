@@ -20,6 +20,21 @@ const createUser = async (request: Request, response: Response) => {
   }
 };
 
+const getCurrentUser = async (request: Request, response: Response) => {
+  try {
+    const { userId } = request;
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+      response.status(404).json({ message: "User not found!" });
+      return;
+    }
+    response.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({ message: "Error getting current user!" });
+  }
+};
+
 const updateUser = async (request: Request, response: Response) => {
   try {
     const { name, addressLine1, city, country } = request.body;
@@ -33,11 +48,11 @@ const updateUser = async (request: Request, response: Response) => {
     user.city = city;
     user.country = country;
     await user.save();
-    response.send(user);
+    response.status(200).send(user);
   } catch (error) {
     console.log(error);
     response.status(500).json({ message: "Error updating user!" });
   }
 };
 
-export default { createUser, updateUser };
+export default { createUser, getCurrentUser, updateUser };
