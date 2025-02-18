@@ -49,7 +49,7 @@ const UserProfileForm = ({
   return (
     <Form {...form}>
       <form
-        className="space-y-4 bg-gray-50 rounded-lg md:p-10"
+        className="space-y-6 bg-gray-100 rounded-lg md:p-10"
         onSubmit={form.handleSubmit(onSave)}
       >
         <div>
