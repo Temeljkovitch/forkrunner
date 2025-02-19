@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FormDescription, FormField, FormItem } from "@/components/ui/form";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import MenuItemInput from "./MenuItemInput";
+import SectionTitle from "./SectionTitle";
 
 const MenuSection = () => {
   const { control } = useFormContext();
@@ -11,14 +12,11 @@ const MenuSection = () => {
   });
 
   return (
-    <section className="space-y-6 ">
-      <div>
-        <h2 className="text-2xl font-semibold">Menu</h2>
-        <FormDescription>
-          Create your menu and give each item a name and a price
-        </FormDescription>
-      </div>
-
+    <section className="space-y-4 ">
+      <SectionTitle
+        title="Menu"
+        description="Create your menu and give each item a name and a price."
+      />
       <FormField
         control={control}
         name="menuItems"

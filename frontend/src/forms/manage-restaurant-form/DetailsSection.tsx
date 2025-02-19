@@ -8,18 +8,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
+import SectionTitle from "./SectionTitle";
 
 const DetailsSection = () => {
   const { control } = useFormContext();
 
   return (
-    <section className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold">Details</h2>
-        <FormDescription>
-          Enter the details about your restaurant
-        </FormDescription>
-      </div>
+    <section className="space-y-4">
+      <SectionTitle
+        title="Details"
+        description="Enter the details about your restaurant."
+      />
       {/* Name */}
       <FormField
         control={control}

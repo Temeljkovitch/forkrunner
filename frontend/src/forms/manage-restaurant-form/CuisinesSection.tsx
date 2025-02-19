@@ -8,17 +8,16 @@ import {
 import { cuisineItems } from "@/config/restaurant-options-config";
 import CuisineCheckbox from "./CuisineCheckbox";
 import { useFormContext } from "react-hook-form";
+import SectionTitle from "./SectionTitle";
 
 const CuisinesSection = () => {
   const { control } = useFormContext();
   return (
-    <section className="space-y-2">
-      <div>
-        <h2 className="text-2xl font-semibold">Cuisines</h2>
-        <FormDescription>
-          Select the cuisines that your restaurant serves
-        </FormDescription>
-      </div>
+    <section className="space-y-4">
+      <SectionTitle
+        title="Cuisines"
+        description="Select the cuisines that your restaurant serves."
+      />
       <FormField
         control={control}
         name="cuisines"
