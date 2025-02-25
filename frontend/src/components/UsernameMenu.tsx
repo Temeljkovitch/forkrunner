@@ -1,8 +1,9 @@
-import { FaUser } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
+import { BiSolidDownArrow } from "react-icons/bi";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,9 +16,9 @@ const UsernameMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-baseline gap-2 font-semibold text-slate-700 hover:text-lime-600 duration-200">
-        <FaUser className="h-4 w-4" />
-        {user?.email}
+      <DropdownMenuTrigger className="flex items-baseline gap-1.5 font-semibold text-slate-700 hover:text-lime-600 duration-200">
+        {user?.name}
+        <BiSolidDownArrow className="w-3 h-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>

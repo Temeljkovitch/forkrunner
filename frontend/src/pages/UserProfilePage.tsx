@@ -11,7 +11,7 @@ const UserProfilePage = () => {
   }
 
   if (!currentUser) {
-    return <div>Unable to laod user profile!</div>;
+    return <div>Unable to load user profile!</div>;
   }
 
   return (

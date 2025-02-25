@@ -27,4 +27,20 @@ const createMyRestaurant = async (request: Request, response: Response) => {
   }
 };
 
-export default { createMyRestaurant };
+const getMyRestaurant = async (request: Request, response: Response) => {
+  try {
+    const { userId } = request;
+    const restaurant = await Restaurant.findOne({ user: userId });
+
+    if (!restaurant) {
+      response.status(404).json({ message: "Restaurant not found!" });
+      return;
+    }
+    response.status(200).json(restaurant);
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({ message: "Error fetching restaurant!" });
+  }
+};
+
+export default { createMyRestaurant, getMyRestaurant };

@@ -1,10 +1,17 @@
 import { useFormContext } from "react-hook-form";
 import SectionTitle from "./SectionTitle";
-import { FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 
 const ImageSection = () => {
-  const { control } = useFormContext();
+  const { control, watch } = useFormContext();
+  const existingImageUrl = watch("imageUrl");
   return (
     <section className="space-y-4">
       <SectionTitle
@@ -12,7 +19,15 @@ const ImageSection = () => {
         description="Add an image that will be displayed on your restaurant listing in the
           search results. Adding a new image will overwrite the existing one."
       />
-      <div className="flex flex-col gap-8 w-[50%]">
+      <div className="flex flex-col gap-8 md:w-[50%]">
+        {existingImageUrl && (
+          <AspectRatio ratio={16 / 9}>
+            <img
+              src={existingImageUrl}
+              className="rounded-md object-cover h-full w-full"
+            ></img>
+          </AspectRatio>
+        )}
         <FormField
           control={control}
           name="imageFile"
@@ -30,7 +45,7 @@ const ImageSection = () => {
                   }
                 />
               </FormControl>
-              <FormMessage/>
+              <FormMessage />
             </FormItem>
           )}
         />
