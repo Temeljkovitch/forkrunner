@@ -33,34 +33,36 @@ const DetailsSection = () => {
           </FormItem>
         )}
       ></FormField>
-      {/* City */}
-      <FormField
-        control={control}
-        name="city"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>City</FormLabel>
-            <FormControl>
-              <Input {...field} className="bg-white" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      ></FormField>
-      {/* Country */}
-      <FormField
-        control={control}
-        name="country"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Country</FormLabel>
-            <FormControl>
-              <Input {...field} className="bg-white" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      ></FormField>
+      <div className="flex gap-4">
+        {/* City */}
+        <FormField
+          control={control}
+          name="city"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>City</FormLabel>
+              <FormControl>
+                <Input {...field} className="bg-white" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        ></FormField>
+        {/* Country */}
+        <FormField
+          control={control}
+          name="country"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Country</FormLabel>
+              <FormControl>
+                <Input {...field} className="bg-white" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        ></FormField>
+      </div>
       {/* Delivery Price */}
       <FormField
         control={control}
