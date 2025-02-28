@@ -1,9 +1,4 @@
-import {
-  FormDescription,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 import { cuisineItems } from "@/config/restaurant-options-config";
 import CuisineCheckbox from "./CuisineCheckbox";
@@ -25,7 +20,11 @@ const CuisinesSection = () => {
           <FormItem>
             <div className="grid md:grid-cols-5 gap-1">
               {cuisineItems.map((cuisineItem) => (
-                <CuisineCheckbox key={cuisineItem} cuisineItem={cuisineItem} field={field} />
+                <CuisineCheckbox
+                  key={cuisineItem}
+                  cuisineItem={cuisineItem}
+                  field={field}
+                />
               ))}
             </div>
             <FormMessage />

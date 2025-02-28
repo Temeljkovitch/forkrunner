@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/">
-          <img  src={logo} alt="ForkRunner logo" />
+          <img src={logo} alt="ForkRunner logo" />
         </Link>
         <div className="md:hidden">
           <MobileNav />
